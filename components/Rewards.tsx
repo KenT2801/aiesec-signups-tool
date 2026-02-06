@@ -204,13 +204,17 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                     </div>
 
                                     <a
-                                        href="https://instagram.com/aiesecinuts"
+                                        href="https://instagram.com/studentleaders.uts"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group/qr cursor-pointer flex flex-col items-center gap-2"
                                     >
-                                        <div className="p-3 bg-white rounded-xl border-2 border-black group-hover/qr:scale-105 transition-transform shadow-md">
-                                            <QrCode size={90} className="text-black" />
+                                        <div className="p-1 bg-white rounded-xl border-2 border-black group-hover/qr:scale-105 transition-transform shadow-md overflow-hidden">
+                                            <img
+                                                src="/instagram-qr.png"
+                                                alt="Instagram QR"
+                                                className="w-24 h-24 object-contain"
+                                            />
                                         </div>
                                         <span className="text-xs font-bold text-gray-400 group-hover/qr:text-black transition-colors">Tap to follow</span>
                                     </a>
