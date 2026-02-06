@@ -36,13 +36,6 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
         };
     }, []);
 
-    // Helper to format year
-    const formatYear = (year: string) => {
-        if (!year) return '';
-        if (year === 'master') return 'Master / PhD';
-        const suffix = year === '1' ? 'st' : year === '2' ? 'nd' : year === '3' ? 'rd' : 'th';
-        return `${year}${suffix} Year`;
-    };
 
     return (
         <div className={`min-h-screen w-full flex flex-col items-center justify-center relative font-lato overflow-x-hidden ${bgGradient}`}>
@@ -258,7 +251,7 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                             </div>
 
                                             <h2 className="text-3xl font-black text-gray-900 leading-tight mb-1">{user.name}</h2>
-                                            <p className="text-gray-600 text-base mb-6 font-medium">{user.degree || 'University'} Student • {formatYear(user.year)}</p>
+                                            <p className="text-gray-600 text-base mb-6 font-medium">{user.degree || 'University'} Student</p>
 
                                             <div className="border-t border-gray-100 pt-6 mt-2 flex-grow flex flex-col">
                                                 <div className="flex gap-4 mb-6">
@@ -266,14 +259,14 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                                         <Briefcase size={24} />
                                                     </div>
                                                     <div>
-                                                        <h3 className="font-bold text-lg text-gray-900">Global Volunteering - Summer 2026</h3>
-                                                        <p className="text-sm text-gray-500 mt-1 font-medium">Project Experience • AIESEC</p>
+                                                        <h3 className="font-bold text-lg text-gray-900">Experience Builder - Summer 2026</h3>
+                                                        <p className="text-sm text-gray-500 mt-1 font-medium">Project Potential • AIESEC</p>
                                                     </div>
                                                 </div>
 
                                                 <div className="bg-slate-50 rounded-xl p-5 border border-slate-100 flex-grow">
                                                     {/* Updated Text */}
-                                                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Skills Acquired</h4>
+                                                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Core Assets</h4>
                                                     <div className="flex flex-wrap gap-2">
                                                         {selectedItems.map((item) => (
                                                             <span key={item.id} className="bg-white text-gray-800 px-3 py-2 rounded-full text-xs font-bold shadow-sm border border-gray-200 flex items-center gap-1.5">
@@ -384,17 +377,27 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
 
                         </div>
 
-                        <div className="text-center pb-12 pt-4">
+                        <div className="text-center pb-12 pt-4 flex flex-col gap-6">
                             <a
-                                href={`https://auth.aiesec.org/users/sign_in?email=${encodeURIComponent(user.email)}#login`}
+                                href="https://aiesecaustralia.org/volunteer/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`px-16 py-6 text-white text-xl font-black uppercase tracking-widest rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all flex items-center gap-4 mx-auto inline-flex`}
                                 style={{ backgroundColor: primaryColor }}
                             >
-                                Activate EXPA Profile <Award size={28} strokeWidth={3} />
+                                Secure My Future: Express Interest <Award size={28} strokeWidth={3} />
                             </a>
-                            <p className="mt-10 text-gray-800 text-xs font-black tracking-[0.3em] uppercase opacity-60">Powered by AIESEC in Australia</p>
+
+                            <a
+                                href="https://auth.aiesec.org/users/sign_in#login"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-900 font-black uppercase tracking-widest text-sm hover:opacity-70 transition-opacity flex items-center gap-2 mx-auto"
+                            >
+                                Already have an account? Launch EXPA <ExternalLink size={16} />
+                            </a>
+
+                            <p className="mt-4 text-gray-800 text-xs font-black tracking-[0.3em] uppercase opacity-60">Powered by AIESEC in Australia</p>
                         </div>
                     </motion.div>
                 )}

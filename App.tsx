@@ -364,19 +364,13 @@ function App() {
                                             </div>
                                         </div>
 
-                                        <div className="pt-8 flex flex-col md:flex-row gap-6">
+                                        <div className="pt-8">
                                             <button
                                                 onClick={handleLaunch}
-                                                className={`flex-1 py-6 text-white text-xl font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[6px] active:translate-y-[6px] active:shadow-none transition-all`}
+                                                className={`w-full py-6 text-white text-xl font-black uppercase tracking-wider rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[6px] active:translate-y-[6px] active:shadow-none transition-all`}
                                                 style={{ backgroundColor: primaryColor }}
                                             >
-                                                Launch EXPA Account
-                                            </button>
-                                            <button
-                                                onClick={handleLaunch}
-                                                className="flex-1 py-6 text-black bg-white border-2 border-black text-xl font-bold uppercase tracking-wider rounded-xl shadow-[6px_6px_0px_0px_#ccc] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_#ccc] active:translate-x-[6px] active:translate-y-[6px] active:shadow-none transition-all"
-                                            >
-                                                Grab Golden Ticket
+                                                Reveal My Career Roadmap
                                             </button>
                                         </div>
                                     </div>
