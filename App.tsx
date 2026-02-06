@@ -5,7 +5,7 @@ import { ArrowRight, X } from 'lucide-react';
 import FlipCard from './components/FlipCard';
 import Rewards from './components/Rewards';
 import { CAREER_SKILLS, ADVENTURE_MISSIONS } from './constants';
-import { PathType, CardItem, UserProfile, CONCERNS_LIST, PASSIONS_LIST, DESTINATION_REGIONS, AVAILABILITY_OPTIONS } from './types';
+import { PathType, CardItem, UserProfile, CONCERNS_LIST } from './types';
 import { DataSubmissionService } from './services/DataSubmissionService';
 
 function App() {
@@ -17,17 +17,7 @@ function App() {
     // Form State
     const [userProfile, setUserProfile] = useState<UserProfile>({
         name: '',
-        age: '',
-        phone: '',
-        email: '',
         degree: '',
-        year: '',
-        university: 'UTS', // Auto-set
-        passion: '',
-        destination: '',
-        availability: '',
-        contactConsent: false,
-        feeAcknowledgment: false,
         concerns: []
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -67,43 +57,10 @@ function App() {
         // Name
         if (!userProfile.name.trim()) newErrors.name = 'Full name is required';
 
-        // Age: Number between 16 and 35
-        const ageNum = parseInt(userProfile.age);
-        if (!userProfile.age) {
-            newErrors.age = 'Required';
-        } else if (isNaN(ageNum) || ageNum < 16 || ageNum > 35) {
-            newErrors.age = '16-35 only';
-        }
-
-        // Email Regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!userProfile.email) {
-            newErrors.email = 'Email is required';
-        } else if (!emailRegex.test(userProfile.email)) {
-            newErrors.email = 'Invalid email format';
-        }
-
-        // Australian Phone Regex: 04XXXXXXXX or +614XXXXXXXX
-        const cleanPhone = userProfile.phone.replace(/\s+/g, '');
-        const phoneRegex = /^(\+61|0)4\d{8}$/;
-        if (!userProfile.phone) {
-            newErrors.phone = 'Phone is required';
-        } else if (!phoneRegex.test(cleanPhone)) {
-            newErrors.phone = 'Invalid AU number (e.g. 04...)';
-        }
-
-        // Degree & Year
+        // Degree
         if (!userProfile.degree.trim()) newErrors.degree = 'Degree is required';
-        if (!userProfile.year) newErrors.year = 'Required';
 
-        // New Fields
-        if (!userProfile.passion) newErrors.passion = 'Required';
-        if (!userProfile.destination) newErrors.destination = 'Required';
-        if (!userProfile.availability) newErrors.availability = 'Required';
-
-        // Checkboxes - Optional now
-        // if (!userProfile.contactConsent) newErrors.contactConsent = 'Required';
-        // if (!userProfile.feeAcknowledgment) newErrors.feeAcknowledgment = 'Required';
+        // Concerns is optional - no validation needed
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -350,252 +307,43 @@ function App() {
                                     </div>
 
                                     <div className="space-y-8">
-                                        {/* Row 1: Name & Age */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Full Name *</label>
-                                                    {errors.name && <span className="text-xs font-bold text-red-500 uppercase">{errors.name}</span>}
-                                                </div>
-                                                <input
-                                                    type="text"
-                                                    placeholder="e.g. Jane Doe"
-                                                    className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.name ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                    value={userProfile.name}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, name: e.target.value });
-                                                        if (errors.name) setErrors({ ...errors, name: '' });
-                                                    }}
-                                                />
+                                        {/* Name Field */}
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex justify-between">
+                                                <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Full Name *</label>
+                                                {errors.name && <span className="text-xs font-bold text-red-500 uppercase">{errors.name}</span>}
                                             </div>
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Age (16-35) *</label>
-                                                    {errors.age && <span className="text-xs font-bold text-red-500 uppercase">{errors.age}</span>}
-                                                </div>
-                                                <input
-                                                    type="number"
-                                                    placeholder="e.g. 21"
-                                                    className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.age ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                    value={userProfile.age}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, age: e.target.value });
-                                                        if (errors.age) setErrors({ ...errors, age: '' });
-                                                    }}
-                                                />
-                                            </div>
+                                            <input
+                                                type="text"
+                                                placeholder="e.g. Jane Doe"
+                                                className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.name ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
+                                                value={userProfile.name}
+                                                onChange={e => {
+                                                    setUserProfile({ ...userProfile, name: e.target.value });
+                                                    if (errors.name) setErrors({ ...errors, name: '' });
+                                                }}
+                                            />
                                         </div>
 
-                                        {/* Row 2: Contact Info */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Email *</label>
-                                                    {errors.email && <span className="text-xs font-bold text-red-500 uppercase">{errors.email}</span>}
-                                                </div>
-                                                <input
-                                                    type="email"
-                                                    placeholder="jane@university.edu"
-                                                    className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.email ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                    value={userProfile.email}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, email: e.target.value });
-                                                        if (errors.email) setErrors({ ...errors, email: '' });
-                                                    }}
-                                                />
+                                        {/* Degree Field */}
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex justify-between">
+                                                <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Degree / Major *</label>
+                                                {errors.degree && <span className="text-xs font-bold text-red-500 uppercase">{errors.degree}</span>}
                                             </div>
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Mobile (AU) *</label>
-                                                    {errors.phone && <span className="text-xs font-bold text-red-500 uppercase">{errors.phone}</span>}
-                                                </div>
-                                                <input
-                                                    type="tel"
-                                                    placeholder="04XXXXXXXX"
-                                                    className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.phone ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                    value={userProfile.phone}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, phone: e.target.value });
-                                                        if (errors.phone) setErrors({ ...errors, phone: '' });
-                                                    }}
-                                                />
-                                            </div>
+                                            <input
+                                                type="text"
+                                                placeholder="e.g. Computer Science"
+                                                className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.degree ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
+                                                value={userProfile.degree}
+                                                onChange={e => {
+                                                    setUserProfile({ ...userProfile, degree: e.target.value });
+                                                    if (errors.degree) setErrors({ ...errors, degree: '' });
+                                                }}
+                                            />
                                         </div>
 
-                                        {/* Row 3: Education */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Degree / Major *</label>
-                                                    {errors.degree && <span className="text-xs font-bold text-red-500 uppercase">{errors.degree}</span>}
-                                                </div>
-                                                <input
-                                                    type="text"
-                                                    placeholder="e.g. Computer Science"
-                                                    className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 ${errors.degree ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                    value={userProfile.degree}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, degree: e.target.value });
-                                                        if (errors.degree) setErrors({ ...errors, degree: '' });
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Year of Study *</label>
-                                                    {errors.year && <span className="text-xs font-bold text-red-500 uppercase">{errors.year}</span>}
-                                                </div>
-                                                <div className="relative">
-                                                    <select
-                                                        className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all appearance-none cursor-pointer ${errors.year ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                        value={userProfile.year}
-                                                        onChange={e => {
-                                                            setUserProfile({ ...userProfile, year: e.target.value });
-                                                            if (errors.year) setErrors({ ...errors, year: '' });
-                                                        }}
-                                                    >
-                                                        <option value="" disabled>Select Year</option>
-                                                        <option value="1">1st Year</option>
-                                                        <option value="2">2nd Year</option>
-                                                        <option value="3">3rd Year</option>
-                                                        <option value="4">4th Year</option>
-                                                        <option value="master">Master / PhD</option>
-                                                    </select>
-                                                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
-                                                        <ArrowRight size={20} className="transform rotate-90" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Row 4: University & Passion */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">University *</label>
-                                                </div>
-                                                <input
-                                                    type="text"
-                                                    disabled
-                                                    className="w-full p-5 bg-gray-100 border-2 border-gray-200 rounded-xl outline-none font-bold text-lg text-gray-500 cursor-not-allowed"
-                                                    value={userProfile.university}
-                                                />
-                                            </div>
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Passionate Issue *</label>
-                                                    {errors.passion && <span className="text-xs font-bold text-red-500 uppercase">{errors.passion}</span>}
-                                                </div>
-                                                <div className="relative">
-                                                    <select
-                                                        className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all appearance-none cursor-pointer ${errors.passion ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                        value={userProfile.passion}
-                                                        onChange={e => {
-                                                            setUserProfile({ ...userProfile, passion: e.target.value });
-                                                            if (errors.passion) setErrors({ ...errors, passion: '' });
-                                                        }}
-                                                    >
-                                                        <option value="" disabled>Select Issue</option>
-                                                        {PASSIONS_LIST.map(p => <option key={p} value={p}>{p}</option>)}
-                                                    </select>
-                                                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
-                                                        <ArrowRight size={20} className="transform rotate-90" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Row 5: Destination & Availability */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Destination Preference *</label>
-                                                    {errors.destination && <span className="text-xs font-bold text-red-500 uppercase">{errors.destination}</span>}
-                                                </div>
-                                                <div className="relative">
-                                                    <select
-                                                        className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all appearance-none cursor-pointer ${errors.destination ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                        value={userProfile.destination}
-                                                        onChange={e => {
-                                                            setUserProfile({ ...userProfile, destination: e.target.value });
-                                                            if (errors.destination) setErrors({ ...errors, destination: '' });
-                                                        }}
-                                                    >
-                                                        <option value="" disabled>Select Region/Country</option>
-                                                        {Object.entries(DESTINATION_REGIONS).map(([region, countries]) => (
-                                                            <optgroup key={region} label={region}>
-                                                                {countries.map(c => <option key={c} value={c}>{c}</option>)}
-                                                            </optgroup>
-                                                        ))}
-                                                    </select>
-                                                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
-                                                        <ArrowRight size={20} className="transform rotate-90" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-col gap-2">
-                                                <div className="flex justify-between">
-                                                    <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Availability *</label>
-                                                    {errors.availability && <span className="text-xs font-bold text-red-500 uppercase">{errors.availability}</span>}
-                                                </div>
-                                                <div className="relative">
-                                                    <select
-                                                        className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all appearance-none cursor-pointer ${errors.availability ? 'border-red-500 focus:border-red-500 bg-red-50' : 'border-gray-200 focus:border-black focus:bg-white'}`}
-                                                        value={userProfile.availability}
-                                                        onChange={e => {
-                                                            setUserProfile({ ...userProfile, availability: e.target.value });
-                                                            if (errors.availability) setErrors({ ...errors, availability: '' });
-                                                        }}
-                                                    >
-                                                        <option value="" disabled>Select Availability</option>
-                                                        {AVAILABILITY_OPTIONS.map(a => <option key={a} value={a}>{a}</option>)}
-                                                    </select>
-                                                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
-                                                        <ArrowRight size={20} className="transform rotate-90" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Consents */}
-                                        <div className="space-y-4 pt-2">
-                                            <label className="flex items-start gap-4 cursor-pointer group">
-                                                <div className={`w-8 h-8 rounded border-2 flex items-center justify-center flex-none transition-all ${userProfile.contactConsent ? 'bg-black border-black text-white' : 'bg-white border-gray-300 group-hover:border-black'}`}>
-                                                    {userProfile.contactConsent && <ArrowRight size={16} className="rotate-45" />}
-                                                </div>
-                                                <input
-                                                    type="checkbox"
-                                                    className="hidden"
-                                                    checked={userProfile.contactConsent}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, contactConsent: e.target.checked });
-                                                        if (errors.contactConsent) setErrors({ ...errors, contactConsent: '' });
-                                                    }}
-                                                />
-                                                <span className="text-sm md:text-base font-medium leading-tight text-gray-600">
-                                                    I'm okay with being contacted in the future for more AIESEC opportunities
-                                                </span>
-                                            </label>
-
-                                            <label className="flex items-start gap-4 cursor-pointer group">
-                                                <div className={`w-8 h-8 rounded border-2 flex items-center justify-center flex-none transition-all ${userProfile.feeAcknowledgment ? 'bg-black border-black text-white' : 'bg-white border-gray-300 group-hover:border-black'}`}>
-                                                    {userProfile.feeAcknowledgment && <ArrowRight size={16} className="rotate-45" />}
-                                                </div>
-                                                <input
-                                                    type="checkbox"
-                                                    className="hidden"
-                                                    checked={userProfile.feeAcknowledgment}
-                                                    onChange={e => {
-                                                        setUserProfile({ ...userProfile, feeAcknowledgment: e.target.checked });
-                                                        if (errors.feeAcknowledgment) setErrors({ ...errors, feeAcknowledgment: '' });
-                                                    }}
-                                                />
-                                                <span className="text-sm md:text-base font-medium leading-tight text-gray-600">
-                                                    I understand that there is a base programme fee of 950AUD exclusive of flights and accommodations for the exchange.
-                                                </span>
-                                            </label>
-                                        </div>
-
+                                        {/* Concerns Section */}
                                         <div>
                                             <p className="text-gray-800 mb-4 text-base font-bold uppercase tracking-wide">
                                                 What's holding you back? <span className="text-gray-400 font-normal normal-case">(We customize the Reality Check based on this)</span>

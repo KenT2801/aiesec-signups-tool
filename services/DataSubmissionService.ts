@@ -3,7 +3,7 @@ import { UserProfile, CardItem } from '../types';
 // PLACEHOLDERS - To be replaced with actual endpoints provided by the National Team
 const NATIONAL_WORKSPACE_ENDPOINT = 'https://aiesecaustralia.org/volunteer/';
 // NOTE: For the spreadsheet to accept data, this must be a Google Apps Script Web App URL, not the Sheet URL itself.
-const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw35cfiY7PiutdMPnsdZ60LLI0_iIdQHULx5v5UNFTUki1AqwfaHeI3ZfYC5YyuxBKj0w/exec';
+const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgPhvQZs0Sh450_rr8jYCqp5TaEzhtGIm7abPHH4Zl1PenFpy2GmA3QWKS_LIbxsf0kw/exec';
 
 export const DataSubmissionService = {
 
@@ -13,7 +13,9 @@ export const DataSubmissionService = {
      */
     submitData: async (profile: UserProfile, selectedItems: CardItem[], path: string | null) => {
         const payload = {
-            ...profile,
+            name: profile.name,
+            degree: profile.degree,
+            concerns: profile.concerns.join(', '),
             focus: path === 'career' ? 'Career' : 'Adventure',
             selectedCards: selectedItems.map(item => item.title).join(', '),
             submittedAt: new Date().toISOString(),
