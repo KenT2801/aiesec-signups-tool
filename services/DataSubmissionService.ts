@@ -3,7 +3,7 @@ import { UserProfile, CardItem } from '../types';
 // PLACEHOLDERS - To be replaced with actual endpoints provided by the National Team
 const NATIONAL_WORKSPACE_ENDPOINT = 'https://aiesecaustralia.org/volunteer/';
 // NOTE: For the spreadsheet to accept data, this must be a Google Apps Script Web App URL, not the Sheet URL itself.
-const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgPhvQZs0Sh450_rr8jYCqp5TaEzhtGIm7abPHH4Zl1PenFpy2GmA3QWKS_LIbxsf0kw/exec';
+const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmclIN1YWdWG1hF6kYwac6FNu-PFDwLb-lby7Ky9jYAAiLZGKesLRPJOt897WkUO9pPA/exec';
 
 export const DataSubmissionService = {
 
