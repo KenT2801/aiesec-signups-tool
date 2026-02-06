@@ -187,7 +187,7 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                 </div>
                                 <div className="p-8 flex flex-col items-center justify-center flex-grow text-center bg-gray-50 relative">
                                     {/* Pattern */}
-                                    <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+                                    <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
 
                                     <h2 className="text-5xl font-black text-gray-900 mb-3 tracking-tighter">VIP ACCESS</h2>
                                     <p className="text-sm font-bold uppercase tracking-[0.3em] text-gray-400 mb-10">Reality Check Session</p>
@@ -207,7 +207,7 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                         href="https://www.instagram.com/studentleaders.uts?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group/qr cursor-pointer flex flex-col items-center gap-3 active:scale-95 transition-all"
+                                        className="relative z-20 group/qr cursor-pointer flex flex-col items-center gap-3 active:scale-95 transition-all"
                                     >
                                         <div className="p-4 bg-white rounded-2xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover/qr:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover/qr:translate-x-[2px] group-hover/qr:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
                                             <QrCode size={80} className="text-black" />
