@@ -207,12 +207,14 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                         href="https://www.instagram.com/studentleaders.uts?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group/qr cursor-pointer flex flex-col items-center gap-2"
+                                        className="group/qr cursor-pointer flex flex-col items-center gap-3 active:scale-95 transition-all"
                                     >
-                                        <div className="p-3 bg-white rounded-xl border-2 border-black group-hover/qr:scale-105 transition-transform shadow-md">
-                                            <QrCode size={90} className="text-black" />
+                                        <div className="p-4 bg-white rounded-2xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover/qr:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover/qr:translate-x-[2px] group-hover/qr:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
+                                            <QrCode size={80} className="text-black" />
                                         </div>
-                                        <span className="text-xs font-bold text-gray-400 group-hover/qr:text-black transition-colors">Tap to follow</span>
+                                        <span className="px-4 py-2 bg-gray-100 rounded-lg text-xs font-black uppercase tracking-widest text-gray-900 group-hover/qr:bg-black group-hover/qr:text-white transition-colors border border-black/5">
+                                            Click to Follow
+                                        </span>
                                     </a>
                                 </div>
                                 {/* Fixed Alignment here */}
