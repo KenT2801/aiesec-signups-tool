@@ -392,9 +392,9 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                 href="https://auth.aiesec.org/users/sign_in#login"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-900 font-black uppercase tracking-widest text-sm hover:opacity-70 transition-opacity flex items-center gap-2 mx-auto"
+                                className="px-12 py-5 text-black bg-white border-2 border-black text-sm font-black uppercase tracking-widest rounded-xl shadow-[4px_4px_0px_0px_#ccc] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#ccc] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-3 mx-auto"
                             >
-                                Already have an account? Launch EXPA <ExternalLink size={16} />
+                                Want to browse promising projects? Launch EXPA <ExternalLink size={18} />
                             </a>
 
                             <p className="mt-4 text-gray-800 text-xs font-black tracking-[0.3em] uppercase opacity-60">Powered by AIESEC in Australia</p>
