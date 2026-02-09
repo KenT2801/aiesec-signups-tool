@@ -346,14 +346,12 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                             Transform your list of skills into impact statements. Use our premium Canva template.
                                         </p>
                                     </div>
-                                    <a
-                                        href="https://docs.google.com/document/d/1l_p5YqYgkqLPo-trcStnj2Nl-sJBRm1abYrTCI6h6gI/edit?usp=sharing"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="relative z-10 mt-6 w-full py-4 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200 uppercase tracking-wide"
+                                    <button
+                                        onClick={() => window.open('https://docs.google.com/document/d/1l_p5YqYgkqLPo-trcStnj2Nl-sJBRm1abYrTCI6h6gI/edit?usp=sharing', '_blank', 'noopener,noreferrer')}
+                                        className="relative z-50 mt-6 w-full py-4 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200 uppercase tracking-wide cursor-pointer"
                                     >
                                         Download Now <ExternalLink size={16} />
-                                    </a>
+                                    </button>
                                 </motion.div>
 
                                 {/* Hidden Gem - Vibrant Gradient Design */}
@@ -376,14 +374,12 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                             Access the curated library of hidden local gems and student stories.
                                         </p>
                                     </div>
-                                    <a
-                                        href="https://www.canva.com/design/DAHAzXMe_qI/iVxk3TXtbWi-5bEjEoV8fQ/edit?utm_content=DAHAzXMe_qI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="relative z-10 mt-6 w-full py-4 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide"
+                                    <button
+                                        onClick={() => window.open('https://www.canva.com/design/DAHAzXMe_qI/iVxk3TXtbWi-5bEjEoV8fQ/edit?utm_content=DAHAzXMe_qI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton', '_blank', 'noopener,noreferrer')}
+                                        className="relative z-50 mt-6 w-full py-4 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer"
                                     >
                                         Unlock Library <ArrowRight size={16} />
-                                    </a>
+                                    </button>
                                 </motion.div>
                             </div>
 
