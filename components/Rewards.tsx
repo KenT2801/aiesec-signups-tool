@@ -346,9 +346,14 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                             Transform your list of skills into impact statements. Use our premium Canva template.
                                         </p>
                                     </div>
-                                    <button className="relative z-10 mt-6 w-full py-4 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200 uppercase tracking-wide">
+                                    <a
+                                        href="https://docs.google.com/document/d/1l_p5YqYgkqLPo-trcStnj2Nl-sJBRm1abYrTCI6h6gI/edit?usp=sharing"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="relative z-10 mt-6 w-full py-4 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200 uppercase tracking-wide"
+                                    >
                                         Download Now <ExternalLink size={16} />
-                                    </button>
+                                    </a>
                                 </motion.div>
 
                                 {/* Hidden Gem - Vibrant Gradient Design */}
@@ -366,14 +371,19 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                         <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-5 border border-white/30 group-hover:rotate-12 transition-transform">
                                             <Sparkles size={28} className="text-yellow-300" />
                                         </div>
-                                        <h3 className="text-2xl font-black mb-3 uppercase tracking-wide">Secret Spots</h3>
+                                        <h3 className="text-2xl font-black mb-3 uppercase tracking-wide">GV Booklet</h3>
                                         <p className="text-base text-white/90 leading-relaxed font-medium">
                                             Access the curated library of hidden local gems and student stories.
                                         </p>
                                     </div>
-                                    <button className="relative z-10 mt-6 w-full py-4 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide">
+                                    <a
+                                        href="https://www.canva.com/design/DAHAzXMe_qI/iVxk3TXtbWi-5bEjEoV8fQ/edit?utm_content=DAHAzXMe_qI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="relative z-10 mt-6 w-full py-4 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide"
+                                    >
                                         Unlock Library <ArrowRight size={16} />
-                                    </button>
+                                    </a>
                                 </motion.div>
                             </div>
 
@@ -381,7 +391,7 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
 
                         <div className="text-center pb-12 pt-4 flex flex-col gap-6">
                             <a
-                                href="https://aiesecaustralia.org/volunteer/"
+                                href="https://aiesecaustralia.org/volunteer/#signup?&wpf777_381=UTS&utm_id=oweek26.1&utm_source=website"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`px-16 py-6 text-white text-xl font-black uppercase tracking-widest rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all flex items-center gap-4 mx-auto inline-flex`}
