@@ -387,7 +387,7 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
 
                         <div className="text-center pb-12 pt-4 flex flex-col gap-6">
                             <a
-                                href="https://aiesecaustralia.org/volunteer/#signup?&wpf777_381=UTS&utm_id=oweek26.1&utm_source=website"
+                                href="https://aiesecaustralia.org/volunteer/#signup?&wpf777_381=UTS&utm_id=oweek26.1&utm_source=website%20game&utm_medium=oweek&utm_term=26.1,ken"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className={`px-16 py-6 text-white text-xl font-black uppercase tracking-widest rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all flex items-center gap-4 mx-auto inline-flex`}
