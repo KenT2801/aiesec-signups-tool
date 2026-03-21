@@ -212,21 +212,36 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-transform duration-500 group-hover:scale-110"></div>
                                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
-                                    <div className="relative z-10">
+                                    <div className="relative z-10 flex-grow">
                                         <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-5 border border-white/30 group-hover:rotate-12 transition-transform">
                                             <Sparkles size={28} className="text-yellow-300" />
                                         </div>
                                         <h3 className="text-2xl font-black mb-3 uppercase tracking-wide">GV Booklet</h3>
-                                        <p className="text-base text-white/90 leading-relaxed font-medium">
+                                        <p className="text-base text-white/90 leading-relaxed font-medium mb-4">
                                             Access the curated library of hidden local gems and student stories.
                                         </p>
+                                        <div className="mt-4 p-4 bg-white/10 rounded-xl border border-white/20 backdrop-blur-sm">
+                                            <p className="text-xs font-bold uppercase tracking-wider text-yellow-300 mb-1">Need answers quickly?</p>
+                                            <p className="text-sm font-medium text-white/90">
+                                                Use our AI NotebookLLM to instantly answer any questions about the booklet content!
+                                            </p>
+                                        </div>
                                     </div>
-                                    <button
-                                        onClick={() => window.open('https://www.canva.com/design/DAHAzXMe_qI/iVxk3TXtbWi-5bEjEoV8fQ/edit?utm_content=DAHAzXMe_qI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton', '_blank', 'noopener,noreferrer')}
-                                        className="relative z-50 mt-6 w-full py-4 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer"
-                                    >
-                                        Unlock Library <ArrowRight size={16} />
-                                    </button>
+                                    
+                                    <div className="relative z-50 mt-6 space-y-3">
+                                        <button
+                                            onClick={() => window.open('https://docs.google.com/presentation/d/1j39sAlEdjlinoVE4hpsmyHdAxOHX9fcG/edit?slide=id.g36c791e321c_3_9#slide=id.g36c791e321c_3_9', '_blank', 'noopener,noreferrer')}
+                                            className="w-full py-4 bg-white/20 backdrop-blur-md text-white border border-white/40 rounded-xl font-bold text-sm hover:bg-white/30 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer shadow-lg shadow-black/10"
+                                        >
+                                            Read Booklet <ArrowRight size={16} />
+                                        </button>
+                                        <button
+                                            onClick={() => window.open('https://notebooklm.google.com/notebook/7fdc6f45-36cf-43a1-98a2-0041526cfd06', '_blank', 'noopener,noreferrer')}
+                                            className="w-full py-3 bg-white text-indigo-700 rounded-xl font-black text-sm hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer shadow-xl shadow-white/20"
+                                        >
+                                            Ask AI Assistant <Sparkles size={16} />
+                                        </button>
+                                    </div>
                                 </motion.div>
                             </div>
 
