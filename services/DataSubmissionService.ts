@@ -15,6 +15,8 @@ export const DataSubmissionService = {
         const payload = {
             name: profile.name,
             degree: profile.degree,
+            email: profile.email || '',
+            phone: profile.phone || '',
             concerns: profile.concerns.join(', '),
             focus: path === 'career' ? 'Career' : 'Adventure',
             selectedCards: selectedItems.map(item => item.title).join(', '),

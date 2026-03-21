@@ -14,6 +14,8 @@ export interface CardItem {
 export interface UserProfile {
   name: string;
   degree: string;
+  email?: string;
+  phone?: string;
   concerns: string[];
 }
 

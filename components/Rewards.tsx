@@ -172,167 +172,14 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                             </motion.div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full mb-16">
-
-                            {/* 1. Digital VIP Pass (Span 4) */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
-                                className="md:col-span-4 bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-[580px] relative group"
-                            >
-                                <div className="bg-black text-white p-6 flex justify-between items-center">
-                                    <span className="font-bold tracking-widest uppercase text-yellow-500 text-sm">Golden Ticket</span>
-                                    <Star className="fill-yellow-500 text-yellow-500" />
-                                </div>
-                                <div className="p-8 flex flex-col items-center justify-center flex-grow text-center bg-gray-50 relative">
-                                    {/* Pattern */}
-                                    <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-
-                                    <h2 className="text-5xl font-black text-gray-900 mb-3 tracking-tighter">VIP ACCESS</h2>
-                                    <p className="text-sm font-bold uppercase tracking-[0.3em] text-gray-400 mb-10">Reality Check Session</p>
-
-                                    <div className="w-full bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-8">
-                                        <div className="flex justify-between items-center border-b border-gray-100 pb-3 mb-3">
-                                            <span className="text-xs uppercase text-gray-400 font-bold tracking-wider">Date</span>
-                                            <span className="text-base font-bold text-gray-900">20 Feb 2026</span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-xs uppercase text-gray-400 font-bold tracking-wider">Location</span>
-                                            <span className="text-base font-bold text-gray-900">UTS Building 2</span>
-                                        </div>
-                                    </div>
-
-                                    <a
-                                        href="https://www.instagram.com/studentleaders.uts?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="relative z-20 group/qr cursor-pointer flex flex-col items-center gap-3 active:scale-95 transition-all"
-                                    >
-                                        <div className="p-4 bg-white rounded-2xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover/qr:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover/qr:translate-x-[2px] group-hover/qr:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
-                                            <QrCode size={80} className="text-black" />
-                                        </div>
-                                        <span className="px-4 py-2 bg-gray-100 rounded-lg text-xs font-black uppercase tracking-widest text-gray-900 group-hover/qr:bg-black group-hover/qr:text-white transition-colors border border-black/5">
-                                            Click to Follow
-                                        </span>
-                                    </a>
-                                </div>
-                                {/* Fixed Alignment here */}
-                                <button className="w-full py-5 bg-yellow-400 text-black font-black uppercase tracking-widest hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm">
-                                    Add to Wallet
-                                </button>
-                            </motion.div>
-
-                            {/* 2. Personalized Card (Span 5) */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 40 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.4 }}
-                                className="md:col-span-5 bg-white rounded-3xl shadow-xl border-2 border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 h-[580px] flex flex-col relative"
-                            >
-                                {path === 'career' ? (
-                                    <div className="h-full flex flex-col bg-white">
-                                        {/* Banner - LinkedIn Style Professional Gradient - UPDATED */}
-                                        <div className="h-36 relative overflow-hidden bg-gradient-to-r from-blue-700 to-indigo-800">
-                                            {/* Abstract Geometric Overlay */}
-                                            <div className="absolute inset-0 opacity-30" style={{
-                                                backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent)',
-                                                backgroundSize: '20px 20px'
-                                            }}></div>
-                                            <div className="absolute right-6 top-6">
-                                                <Linkedin className="text-white opacity-50" size={28} />
-                                            </div>
-                                        </div>
-
-                                        <div className="px-8 flex-grow flex flex-col relative">
-                                            {/* Avatar - Overlapping the banner */}
-                                            <div className="-mt-16 mb-6 flex justify-between items-end">
-                                                <div className="w-32 h-32 rounded-full border-[6px] border-white bg-slate-100 flex items-center justify-center text-5xl font-bold text-slate-400 shadow-md overflow-hidden relative">
-                                                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
-                                                </div>
-                                            </div>
-
-                                            <h2 className="text-3xl font-black text-gray-900 leading-tight mb-1">{user.name}</h2>
-                                            <p className="text-gray-600 text-base mb-6 font-medium">{user.degree || 'University'} Student</p>
-
-                                            <div className="border-t border-gray-100 pt-6 mt-2 flex-grow flex flex-col">
-                                                <div className="flex gap-4 mb-6">
-                                                    <div className="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-200">
-                                                        <Briefcase size={24} />
-                                                    </div>
-                                                    <div>
-                                                        <h3 className="font-bold text-lg text-gray-900">Experience Builder - Summer 2026</h3>
-                                                        <p className="text-sm text-gray-500 mt-1 font-medium">Project Potential • AIESEC</p>
-                                                    </div>
-                                                </div>
-
-                                                <div className="bg-slate-50 rounded-xl p-5 border border-slate-100 flex-grow">
-                                                    {/* Updated Text */}
-                                                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Core Assets</h4>
-                                                    <div className="flex flex-wrap gap-2">
-                                                        {selectedItems.map((item) => (
-                                                            <span key={item.id} className="bg-white text-gray-800 px-3 py-2 rounded-full text-xs font-bold shadow-sm border border-gray-200 flex items-center gap-1.5">
-                                                                <Check size={14} className="text-blue-600" strokeWidth={4} /> {item.title}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="h-full flex flex-col bg-gray-50 relative overflow-hidden">
-                                        {/* Watermark */}
-                                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none z-0">
-                                            <Plane size={350} strokeWidth={0.5} />
-                                        </div>
-
-                                        {/* Boarding Pass Style */}
-                                        <div className="bg-[#F85A40] p-8 text-white flex justify-between items-center relative overflow-hidden h-36 z-10">
-                                            <div className="absolute inset-0 bg-black opacity-10" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 11px)' }}></div>
-                                            <div className="z-10 flex flex-col">
-                                                <span className="font-lato font-black track-widest text-sm opacity-80 mb-1">FLIGHT NO.</span>
-                                                <span className="font-black text-4xl tracking-widest">EXP-2026</span>
-                                            </div>
-                                            <Compass size={100} className="opacity-20 absolute -right-8 -bottom-8 animate-spin-slow" />
-                                        </div>
-
-                                        <div className="p-8 flex-grow flex flex-col relative z-10">
-                                            <div className="flex justify-between mb-8 border-b-2 border-dashed border-gray-300 pb-6">
-                                                <div>
-                                                    <p className="text-xs text-gray-400 uppercase font-bold tracking-widest mb-2">Passenger</p>
-                                                    <p className="font-black text-2xl text-gray-800">{user.name}</p>
-                                                </div>
-                                                <div className="text-right">
-                                                    <p className="text-xs text-gray-400 uppercase font-bold tracking-widest mb-2">Dest.</p>
-                                                    <p className="font-black text-2xl text-[#F85A40]">GLOBAL</p>
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-4">
-                                                <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">Mission Manifest</p>
-                                                {selectedItems.map((item, idx) => (
-                                                    <div key={idx} className="flex items-center gap-4 group">
-                                                        <div className="w-10 h-10 rounded-full bg-white border-2 border-[#F85A40] text-[#F85A40] flex items-center justify-center font-black text-lg shadow-[2px_2px_0px_0px_#F85A40]">{idx + 1}</div>
-                                                        <span className="font-bold text-gray-800 text-base">{item.title}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className="absolute bottom-6 left-8 right-8 h-16 bg-gray-800 opacity-10 rounded-lg" style={{ backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 2px, #000 2px, #000 4px)' }}></div>
-                                        </div>
-                                    </div>
-                                )}
-                            </motion.div>
-
-                            {/* 3. Small Cards Column (Span 3) */}
-                            <div className="md:col-span-3 flex flex-col gap-6">
+                        <div className="max-w-5xl mx-auto w-full mb-16">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-16">
                                 {/* CV Template - UPDATED DESIGN */}
                                 <motion.div
-                                    initial={{ opacity: 0, x: 20 }}
+                                    initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.5 }}
-                                    className="bg-white/80 backdrop-blur-xl border border-white/50 rounded-3xl shadow-xl p-8 text-gray-800 flex flex-col justify-between flex-1 relative overflow-hidden group hover:-translate-y-1 transition-all duration-300 ring-1 ring-gray-100"
+                                    transition={{ delay: 0.3 }}
+                                    className="bg-white/80 backdrop-blur-xl border border-white/50 rounded-3xl shadow-xl p-8 text-gray-800 flex flex-col justify-between h-full min-h-[320px] relative overflow-hidden group hover:-translate-y-1 transition-all duration-300 ring-1 ring-gray-100"
                                 >
                                     {/* Subtle blue gradient overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50 z-0"></div>
@@ -358,8 +205,8 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                 <motion.div
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.6 }}
-                                    className="relative rounded-3xl shadow-xl p-8 text-white flex flex-col justify-between flex-1 overflow-hidden group hover:-translate-y-1 transition-all duration-300"
+                                    transition={{ delay: 0.4 }}
+                                    className="relative rounded-3xl shadow-xl p-8 text-white flex flex-col justify-between h-full min-h-[320px] overflow-hidden group hover:-translate-y-1 transition-all duration-300"
                                 >
                                     {/* Dynamic Background */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 transition-transform duration-500 group-hover:scale-110"></div>
@@ -383,29 +230,41 @@ const Rewards: React.FC<RewardsProps> = ({ user, selectedItems, path }) => {
                                 </motion.div>
                             </div>
 
-                        </div>
-
-                        <div className="text-center pb-12 pt-4 flex flex-col gap-6">
-                            <a
-                                href="https://aiesecaustralia.org/volunteer/#signup?&wpf777_381=UTS&utm_id=oweek26.1&utm_source=website%20game&utm_medium=oweek&utm_term=26.1,ken"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`px-16 py-6 text-white text-xl font-black uppercase tracking-widest rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all flex items-center gap-4 mx-auto inline-flex`}
-                                style={{ backgroundColor: primaryColor }}
+                            {/* QR Code Section */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="flex flex-col items-center justify-center mb-16"
                             >
-                                Secure My Future: Express Interest <Award size={28} strokeWidth={3} />
-                            </a>
+                                <a
+                                    href="https://www.instagram.com/studentleaders.uts?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group flex flex-col items-center gap-4 cursor-pointer"
+                                >
+                                    <div className="p-4 bg-white rounded-2xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-[2px] group-hover:translate-y-[2px] active:scale-95 transition-all">
+                                        <QrCode size={120} className="text-black" />
+                                    </div>
+                                    <span className="font-black text-xl text-gray-900 tracking-wide uppercase group-hover:text-blue-600 transition-colors">
+                                        Follow for more
+                                    </span>
+                                </a>
+                            </motion.div>
 
-                            <a
-                                href="https://auth.aiesec.org/users/sign_in#login"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-12 py-5 text-black bg-white border-2 border-black text-sm font-black uppercase tracking-widest rounded-xl shadow-[4px_4px_0px_0px_#ccc] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#ccc] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all flex items-center gap-3 mx-auto"
-                            >
-                                Want to browse promising projects? Launch EXPA <ExternalLink size={18} />
-                            </a>
+                            <div className="text-center pb-12 pt-4 flex flex-col gap-6">
+                                <a
+                                    href="https://auth.aiesec.org/users/sign_in#login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`px-16 py-6 text-white text-xl font-black uppercase tracking-widest rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all flex items-center justify-center gap-4 mx-auto inline-flex`}
+                                    style={{ backgroundColor: primaryColor }}
+                                >
+                                    Launch EXPA <Award size={28} strokeWidth={3} />
+                                </a>
 
-                            <p className="mt-4 text-gray-800 text-xs font-black tracking-[0.3em] uppercase opacity-60">Powered by AIESEC in Australia</p>
+                                <p className="mt-4 text-gray-800 text-xs font-black tracking-[0.3em] uppercase opacity-60">Powered by AIESEC in Australia</p>
+                            </div>
                         </div>
                     </motion.div>
                 )}

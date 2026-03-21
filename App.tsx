@@ -18,6 +18,8 @@ function App() {
     const [userProfile, setUserProfile] = useState<UserProfile>({
         name: '',
         degree: '',
+        email: '',
+        phone: '',
         concerns: []
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -340,6 +342,34 @@ function App() {
                                                     setUserProfile({ ...userProfile, degree: e.target.value });
                                                     if (errors.degree) setErrors({ ...errors, degree: '' });
                                                 }}
+                                            />
+                                        </div>
+
+                                        {/* Email Field */}
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex justify-between">
+                                                <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Email (Recommended)</label>
+                                            </div>
+                                            <input
+                                                type="email"
+                                                placeholder="e.g. jane@example.com"
+                                                className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 border-gray-200 focus:border-black focus:bg-white`}
+                                                value={userProfile.email || ''}
+                                                onChange={e => setUserProfile({ ...userProfile, email: e.target.value })}
+                                            />
+                                        </div>
+
+                                        {/* Phone Field */}
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex justify-between">
+                                                <label className="text-sm font-bold uppercase text-gray-500 tracking-wider">Phone Number (Recommended)</label>
+                                            </div>
+                                            <input
+                                                type="tel"
+                                                placeholder="e.g. 0400 123 456"
+                                                className={`w-full p-5 bg-gray-50 border-2 rounded-xl outline-none font-bold text-lg transition-all placeholder:text-gray-300 border-gray-200 focus:border-black focus:bg-white`}
+                                                value={userProfile.phone || ''}
+                                                onChange={e => setUserProfile({ ...userProfile, phone: e.target.value })}
                                             />
                                         </div>
 
